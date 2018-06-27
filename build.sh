@@ -103,8 +103,8 @@ function gencert() {
 		exit 1
 	fi
 	# override DNAME and CERT_SUBJ_ALT_NAMES before calling or use dummy values
-	DNAME="${DNAME:-CN=cas.example.org,OU=Example,OU=Org,C=US}"
-	CERT_SUBJ_ALT_NAMES="${CERT_SUBJ_ALT_NAMES:-dns:example.org,dns:localhost,ip:127.0.0.1}"
+	DNAME="${DNAME:-CN=passport.andykit.com,OU=Andykit,OU=Com,C=US}"
+	CERT_SUBJ_ALT_NAMES="${CERT_SUBJ_ALT_NAMES:-dns:andykit.com,dns:passport.andykit.com,ip:10.60.82.154}"
 	echo "Generating keystore for CAS with DN ${DNAME}"
 	keytool -genkeypair -alias cas -keyalg RSA -keypass changeit -storepass changeit -keystore /etc/cas/thekeystore -dname ${DNAME} -ext SAN=${CERT_SUBJ_ALT_NAMES}
 	keytool -exportcert -alias cas -storepass changeit -keystore /etc/cas/thekeystore -file /etc/cas/cas.cer
